@@ -1,4 +1,24 @@
+# Web Framework
 fastapi
 uvicorn
 httpx
+
+# Database
 sqlalchemy
+google-cloud-bigquery
+pandas-gbq
+
+# Data Processing
+pandas
+requests
+aiohttp
+
+# Utilities
+tqdm
+python-dotenv
+astral
+
+# Development
+pytest
+black
+isort
