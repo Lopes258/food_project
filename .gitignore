@@ -34,5 +34,7 @@ ENV/
 *.swo
 
 # Project specific
-bigquery.env
-*.json 
+src/config/bigquery.env
+src/config/*.json
+src/**/__pycache__/
+tests/**/__pycache__/ 
