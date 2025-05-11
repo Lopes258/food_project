@@ -38,3 +38,8 @@ src/config/bigquery.env
 src/config/*.json
 src/**/__pycache__/
 tests/**/__pycache__/ 
+bigquery.env
+food-project-459320-968324d35e7e.json
+setup_path.py
+src/analysis/db_connection.py
+.coverage

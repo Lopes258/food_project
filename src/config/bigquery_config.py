@@ -1,27 +1,39 @@
+import os
+
+from dotenv import load_dotenv
 from google.cloud import bigquery
 from google.oauth2 import service_account
-import os
-from dotenv import load_dotenv
 
-# Load environment variables from bigquery.env
-load_dotenv('bigquery.env')
+# Carregar as variáveis de ambiente do arquivo bigquery.env
+load_dotenv(
+    os.path.join(
+        os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "bigquery.env"
+    )
+)
 
-# BigQuery configuration
-PROJECT_ID = os.getenv('GOOGLE_CLOUD_PROJECT')
+# Configuração do BigQuery
+PROJECT_ID = os.getenv("GOOGLE_CLOUD_PROJECT")
 if not PROJECT_ID:
-    raise ValueError("GOOGLE_CLOUD_PROJECT environment variable is not set in bigquery.env")
+    raise ValueError(
+        "GOOGLE_CLOUD_PROJECT environment variable is not set in bigquery.env"
+    )
 
-CREDENTIALS_PATH = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
+CREDENTIALS_PATH = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
 if not CREDENTIALS_PATH:
-    raise ValueError("GOOGLE_APPLICATION_CREDENTIALS environment variable is not set in bigquery.env")
+    raise ValueError(
+        "GOOGLE_APPLICATION_CREDENTIALS environment variable is not set in bigquery.env"
+    )
 
 if not os.path.exists(CREDENTIALS_PATH):
-    raise FileNotFoundError(f"Service account key file not found at: {CREDENTIALS_PATH}")
+    raise FileNotFoundError(
+        f"Service account key file not found at: {CREDENTIALS_PATH}"
+    )
 
-DATASET_ID = 'food_data'
-TABLE_ID = 'products'
+DATASET_ID = "food_data"
+TABLE_ID = "products"
 
-# Initialize BigQuery client
+
+# Inicializar o cliente do BigQuery
 def get_bigquery_client():
     try:
         credentials = service_account.Credentials.from_service_account_file(
@@ -29,9 +41,10 @@ def get_bigquery_client():
         )
         return bigquery.Client(credentials=credentials, project=PROJECT_ID)
     except Exception as e:
-        raise Exception(f"Failed to initialize BigQuery client: {str(e)}")
+        raise Exception(f"Erro ao inicializar o cliente do BigQuery: {str(e)}")
 
-# Schema for the products table
+
+# Schema para a tabela de produtos
 PRODUCTS_SCHEMA = [
     bigquery.SchemaField("id", "INTEGER", mode="REQUIRED"),
     bigquery.SchemaField("code", "STRING", mode="REQUIRED"),
@@ -50,5 +63,5 @@ PRODUCTS_SCHEMA = [
     bigquery.SchemaField("fat_100g", "FLOAT"),
     bigquery.SchemaField("fiber_100g", "FLOAT"),
     bigquery.SchemaField("sodium_100g", "FLOAT"),
-    bigquery.SchemaField("sugars_100g", "FLOAT")
-] 
+    bigquery.SchemaField("sugars_100g", "FLOAT"),
+]

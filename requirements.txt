@@ -1,24 +1,32 @@
-# Web Framework
-fastapi
-uvicorn
-httpx
+# Core Data Science
+pandas>=2.0.0
+numpy>=1.24.0
+scikit-learn>=1.3.0
 
-# Database
-sqlalchemy
-google-cloud-bigquery
-pandas-gbq
+# Visualization
+matplotlib>=3.7.0
+seaborn>=0.12.0
 
-# Data Processing
-pandas
-requests
-aiohttp
+# Database and Cloud
+google-cloud-bigquery>=3.11.0
+pandas-gbq>=0.28.0
+sqlalchemy>=2.0.0
+
+# Web and API
+fastapi>=0.100.0
+uvicorn>=0.22.0
+httpx>=0.24.0
+requests>=2.31.0
+aiohttp>=3.8.0
 
 # Utilities
-tqdm
-python-dotenv
-astral
+tqdm>=4.65.0
+python-dotenv>=1.0.0
+astral>=3.2
+uv>=0.1.0
 
-# Development
-pytest
-black
-isort
+# Development Tools (install with: pip install -r requirements-dev.txt)
+# pytest>=7.4.0
+# black>=23.7.0
+# isort>=5.12.0
+# flake8>=6.1.0
